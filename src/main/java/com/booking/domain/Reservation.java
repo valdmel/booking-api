@@ -15,7 +15,7 @@ public class Reservation {
     private LocalDate endDate;
 
     public boolean canBeCompleted() {
-        return isStartDateBeforeEndDate() && isNotInAdvance() && isNotLongerThanPermitted();
+        return isDateValid() && isNotInAdvance() && isNotLongerThanPermitted();
     }
 
     private boolean isNotLongerThanPermitted() {
@@ -28,7 +28,7 @@ public class Reservation {
         return today.until(startDate, ChronoUnit.DAYS) < 30;
     }
 
-    private boolean isStartDateBeforeEndDate() {
+    private boolean isDateValid() {
         return startDate.isBefore(endDate);
     }
 }
