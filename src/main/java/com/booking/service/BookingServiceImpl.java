@@ -1,5 +1,6 @@
 package com.booking.service;
 
+import com.booking.commons.enums.ReservationStatus;
 import com.booking.domain.Reservation;
 import com.booking.entity.ReservationEntity;
 import com.booking.exception.RoomNotAvailableException;
@@ -22,6 +23,8 @@ public class BookingServiceImpl implements BookingService {
         if (isRoomAvailable) {
             throw new RoomNotAvailableException();
         }
+
+        reservation.setStatus(ReservationStatus.NOT_AVAILABLE.toString());
 
         ReservationEntity reservationEntity = Mappers.getMapper(ReservationMapper.class).mapReservationToReservationEntity(reservation);
 
