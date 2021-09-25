@@ -1,11 +1,11 @@
 package com.booking.service;
 
+import com.booking.commons.enums.ReservationStatus;
 import com.booking.domain.Reservation;
 import com.booking.dto.ReservationResponseDTO;
 import com.booking.dto.ReservationRequestDTO;
 import com.booking.exception.ReservationNotCreatedException;
 import com.booking.mapper.ReservationMapper;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +21,8 @@ public class BookingFacade {
         if (!reservation.canBeCompleted()) {
             throw new ReservationNotCreatedException();
         }
+
+        reservation.setStatus(ReservationStatus.NOT_AVAILABLE.toString());
 
         return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.createReservation(reservation));
     }

@@ -13,6 +13,7 @@ public class Reservation {
 
     private LocalDate startDate;
     private LocalDate endDate;
+    private String status;
 
     public boolean canBeCompleted() {
         return isDateValid() && isNotInAdvance() && isNotLongerThanPermitted();

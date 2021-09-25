@@ -21,4 +21,7 @@ public class ReservationResponseDTO {
 
     @JsonProperty("end_date")
     private String endDate;
+
+    @JsonProperty("status")
+    private String status;
 }

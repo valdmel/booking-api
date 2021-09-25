@@ -13,7 +13,7 @@ public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDate startDate;
     private LocalDate endDate;
+    private String status;
 }
