@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservationDTO {
+public class ReservationRequestDTO {
 
     @NotNull(message = "Start date cannot be null!")
     @JsonProperty("start_date")
@@ -20,8 +20,4 @@ public class ReservationDTO {
     @NotNull(message = "End date cannot be null!")
     @JsonProperty("end_date")
     private String endDate;
-
-    @NotNull(message = "Customer data cannot be null!")
-    @JsonProperty("customer")
-    private CustomerDTO customerDTO;
 }

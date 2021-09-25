@@ -1,8 +1,11 @@
 package com.booking.controller;
 
-import com.booking.dto.ReservationDTO;
+import com.booking.dto.ReservationResponseDTO;
+import com.booking.dto.ReservationRequestDTO;
 import com.booking.service.BookingFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
@@ -16,13 +19,13 @@ public class BookingController {
     private BookingFacade bookingFacade;
 
     @PostMapping("/create")
-    public void placeReservation(@RequestBody @Valid ReservationDTO reservationDTO) {
-        bookingFacade.createReservation(reservationDTO);
+    public ResponseEntity<ReservationResponseDTO> createReservation(@RequestBody @Valid ReservationRequestDTO reservationRequestDTO) {
+        return new ResponseEntity<>(bookingFacade.createReservation(reservationRequestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/find")
-    public void findAvailableRoom() {
-
+    public ResponseEntity<ReservationResponseDTO> findReservationAvailability() {
+        return new ResponseEntity<>(bookingFacade.findReservationAvailability(), HttpStatus.FOUND);
     }
 
     @PostMapping("/update")
