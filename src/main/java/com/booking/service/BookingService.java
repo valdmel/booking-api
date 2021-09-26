@@ -8,4 +8,6 @@ public interface BookingService {
     Reservation createReservation(Reservation reservation);
 
     Reservation checkReservationAvailability();
+
+    Reservation updateReservation(Reservation reservation);
 }

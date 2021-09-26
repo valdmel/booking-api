@@ -13,6 +13,10 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class ReservationRequestDTO {
 
+    @NotNull(message = "Id cannot be null!")
+    @JsonProperty("id")
+    private Long id;
+
     @NotNull(message = "Start date cannot be null!")
     @JsonProperty("start_date")
     private String startDate;

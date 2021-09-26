@@ -11,9 +11,9 @@ import java.time.temporal.ChronoUnit;
 @AllArgsConstructor
 public class Reservation {
 
+    private Long id;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String status;
 
     public boolean canBeCompleted() {
         return isDateValid() && isNotInAdvance() && isNotLongerThanPermitted();

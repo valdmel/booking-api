@@ -28,9 +28,9 @@ public class BookingController {
         return new ResponseEntity<>(bookingFacade.checkReservationAvailability(), HttpStatus.FOUND);
     }
 
-    @PostMapping("/update")
-    public void updateReservation() {
-
+    @PatchMapping("/update")
+    public ResponseEntity<ReservationResponseDTO> updateReservation(@RequestBody @Valid ReservationRequestDTO reservationRequestDTO) {
+        return new ResponseEntity<>(bookingFacade.updateReservation(reservationRequestDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/cancel")

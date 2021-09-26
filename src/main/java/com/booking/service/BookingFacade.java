@@ -27,4 +27,15 @@ public class BookingFacade {
     public ReservationResponseDTO checkReservationAvailability() {
         return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.checkReservationAvailability());
     }
+
+
+    public ReservationResponseDTO updateReservation(ReservationRequestDTO reservationRequestDTO) {
+        Reservation reservation = ReservationMapper.INSTANCE.mapReservationRequestDTOToReservation(reservationRequestDTO);
+
+        if (!reservation.canBeCompleted()) {
+            throw new ReservationNotCreatedException();
+        }
+
+        return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.updateReservation(reservation));
+    }
 }

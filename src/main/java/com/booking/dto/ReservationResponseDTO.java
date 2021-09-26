@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.validation.constraints.NotNull;
 
 @Data
 @Builder
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class ReservationResponseDTO {
 
-    @JsonProperty("reservation_id")
+    @JsonProperty("id")
     private Integer id;
 
     @JsonProperty("start_date")
@@ -21,7 +20,4 @@ public class ReservationResponseDTO {
 
     @JsonProperty("end_date")
     private String endDate;
-
-    @JsonProperty("status")
-    private String status;
 }
