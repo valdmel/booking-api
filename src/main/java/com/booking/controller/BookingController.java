@@ -14,6 +14,8 @@ import javax.validation.constraints.Min;
 @RequestMapping(BookingController.BASE_URL)
 public class BookingController {
 
+    private static final String CANCEL_MESSAGE = "Reservation canceled!";
+
     public static final String BASE_URL = "/api/v1/booking";
 
     @Autowired
@@ -41,6 +43,6 @@ public class BookingController {
                                                                                 Long id) {
         bookingFacade.cancelReservationById(id);
 
-        return new ResponseEntity<>("Reservation canceled!", HttpStatus.OK);
+        return new ResponseEntity<>(CANCEL_MESSAGE, HttpStatus.OK);
     }
 }
