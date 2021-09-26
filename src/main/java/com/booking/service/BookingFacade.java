@@ -38,4 +38,8 @@ public class BookingFacade {
 
         return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.updateReservation(reservation));
     }
+
+    public void cancelReservationById(Long id) {
+        bookingService.cancelReservationById(id);
+    }
 }

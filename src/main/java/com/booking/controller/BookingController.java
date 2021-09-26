@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 @RestController
 @RequestMapping(BookingController.BASE_URL)
@@ -19,7 +20,8 @@ public class BookingController {
     private BookingFacade bookingFacade;
 
     @PostMapping("/create")
-    public ResponseEntity<ReservationResponseDTO> createReservation(@RequestBody @Valid ReservationRequestDTO reservationRequestDTO) {
+    public ResponseEntity<ReservationResponseDTO> createReservation(@RequestBody @Valid ReservationRequestDTO
+                                                                                reservationRequestDTO) {
         return new ResponseEntity<>(bookingFacade.createReservation(reservationRequestDTO), HttpStatus.CREATED);
     }
 
@@ -29,12 +31,16 @@ public class BookingController {
     }
 
     @PatchMapping("/update")
-    public ResponseEntity<ReservationResponseDTO> updateReservation(@RequestBody @Valid ReservationRequestDTO reservationRequestDTO) {
+    public ResponseEntity<ReservationResponseDTO> updateReservation(@RequestBody @Valid ReservationRequestDTO
+                                                                                reservationRequestDTO) {
         return new ResponseEntity<>(bookingFacade.updateReservation(reservationRequestDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/cancel")
-    public void cancelReservation() {
+    @DeleteMapping("/cancel/{id}")
+    public ResponseEntity<String> cancelReservation(@PathVariable("id") @Min(value = 1, message = "Invalid id!")
+                                                                                Long id) {
+        bookingFacade.cancelReservationById(id);
 
+        return new ResponseEntity<>("Reservation canceled!", HttpStatus.OK);
     }
 }

@@ -10,4 +10,6 @@ public interface BookingService {
     Reservation checkReservationAvailability();
 
     Reservation updateReservation(Reservation reservation);
+
+    void cancelReservationById(Long id);
 }

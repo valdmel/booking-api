@@ -47,6 +47,15 @@ public class BookingServiceImpl implements BookingService {
         return ReservationMapper.INSTANCE.mapReservationEntityToReservation(bookingRepository.save(reservationEntity));
     }
 
+    @Override
+    public void cancelReservationById(Long id) {
+        if (!isThereAnyReservation()) {
+            throw new ReservationNotFoundException();
+        }
+
+        bookingRepository.deleteById(id);
+    }
+
     private boolean isThereAnyReservation() {
         return bookingRepository.count() > 0;
     }
