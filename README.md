@@ -11,3 +11,28 @@ The requirements are:
 - To simplify the use case, a “DAY’ in the hotel room starts from 00:00 to 23:59:59.
 - Every end-user can check the room availability, place a reservation, cancel it or modify it.
 - To simplify the API is insecure.
+
+### STACK USED
+
+The API is created using:
+- Java 11
+- Spring v2.5.4 with starter-pack, H2, dev-tools and more
+- Lombok v1.18.20
+- MapStruct 1.4.2.Final
+
+### ENDPOINTS
+
+- Server port used: 8080.
+- Example of pay load used for testing:
+{
+	"id": 1,
+	"start_date": "2021-09-26",
+	"end_date": "2021-09-28"
+}
+
+| Path | Description |
+| ------------ | ------------ |
+| /api/v1/booking/create | Place a reservation |
+| /api/v1/booking/find | Check room availability |
+| /api/v1/booking/update | Modify a reservation |
+| /api/v1/booking/cancel/1| Cancel a reservation |
