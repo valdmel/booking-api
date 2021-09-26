@@ -25,6 +25,6 @@ public class BookingFacade {
     }
 
     public ReservationResponseDTO findReservationAvailability() {
-        return null;//ReservationMapper.INSTANCE.mapCustomersToCustomersDTO();
+        return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.findReservationAvailability());
     }
 }

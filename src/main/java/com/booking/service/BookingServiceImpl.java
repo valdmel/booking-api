@@ -3,6 +3,7 @@ package com.booking.service;
 import com.booking.commons.enums.ReservationStatus;
 import com.booking.domain.Reservation;
 import com.booking.entity.ReservationEntity;
+import com.booking.exception.ReservationNotFoundException;
 import com.booking.exception.RoomNotAvailableException;
 import com.booking.mapper.ReservationMapper;
 import com.booking.repository.BookingRepository;
@@ -18,9 +19,9 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Reservation createReservation(Reservation reservation) {
-        boolean isRoomAvailable = bookingRepository.count() > 0;
+        boolean isThereAnyReservation = bookingRepository.count() > 0;
 
-        if (isRoomAvailable) {
+        if (isThereAnyReservation) {
             throw new RoomNotAvailableException();
         }
 
@@ -28,6 +29,17 @@ public class BookingServiceImpl implements BookingService {
 
         ReservationEntity reservationEntity = Mappers.getMapper(ReservationMapper.class).mapReservationToReservationEntity(reservation);
 
-        return Mappers.getMapper(ReservationMapper.class).mapReservationEntityToReservation(bookingRepository.save(reservationEntity));
+        return ReservationMapper.INSTANCE.mapReservationEntityToReservation(bookingRepository.save(reservationEntity));
+    }
+
+    @Override
+    public Reservation findReservationAvailability() {
+        boolean isThereAnyReservation = bookingRepository.count() > 0;
+
+        if (!isThereAnyReservation) {
+            throw new ReservationNotFoundException();
+        }
+
+        return ReservationMapper.INSTANCE.mapReservationEntityToReservation(bookingRepository.findAll().get(0));
     }
 }
