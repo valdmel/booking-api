@@ -21,11 +21,11 @@ public class BookingFacade {
             throw new ReservationNotCreatedException();
         }
 
-        return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.createReservation(reservation));
+        return ReservationMapper.INSTANCE.mapReservationToReservationResponseDTO(bookingService.createReservation(reservation));
     }
 
     public ReservationResponseDTO checkReservationAvailability() {
-        return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.checkReservationAvailability());
+        return ReservationMapper.INSTANCE.mapReservationToReservationResponseDTO(bookingService.checkReservationAvailability());
     }
 
 
@@ -36,7 +36,7 @@ public class BookingFacade {
             throw new ReservationNotCreatedException();
         }
 
-        return ReservationMapper.INSTANCE.mapReservationToReservationDTO(bookingService.updateReservation(reservation));
+        return ReservationMapper.INSTANCE.mapReservationToReservationResponseDTO(bookingService.updateReservation(reservation));
     }
 
     public void cancelReservationById(Long id) {

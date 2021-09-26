@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class ReservationResponseDTO {
 
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
 
     @JsonProperty("start_date")
     private String startDate;
