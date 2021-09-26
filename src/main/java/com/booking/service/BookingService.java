@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 public interface BookingService {
     Reservation createReservation(Reservation reservation);
 
-    Reservation findReservationAvailability();
+    Reservation checkReservationAvailability();
 }

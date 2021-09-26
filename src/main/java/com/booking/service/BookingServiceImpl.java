@@ -19,9 +19,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Reservation createReservation(Reservation reservation) {
-        boolean isThereAnyReservation = bookingRepository.count() > 0;
-
-        if (isThereAnyReservation) {
+        if (isThereAnyReservation()) {
             throw new RoomNotAvailableException();
         }
 
@@ -33,13 +31,15 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Reservation findReservationAvailability() {
-        boolean isThereAnyReservation = bookingRepository.count() > 0;
-
-        if (!isThereAnyReservation) {
+    public Reservation checkReservationAvailability() {
+        if (!isThereAnyReservation()) {
             throw new ReservationNotFoundException();
         }
 
         return ReservationMapper.INSTANCE.mapReservationEntityToReservation(bookingRepository.findAll().get(0));
+    }
+
+    private boolean isThereAnyReservation() {
+        return bookingRepository.count() > 0;
     }
 }

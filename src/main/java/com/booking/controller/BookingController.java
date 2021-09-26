@@ -24,8 +24,8 @@ public class BookingController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<ReservationResponseDTO> findReservationAvailability() {
-        return new ResponseEntity<>(bookingFacade.findReservationAvailability(), HttpStatus.FOUND);
+    public ResponseEntity<ReservationResponseDTO> checkReservationAvailability() {
+        return new ResponseEntity<>(bookingFacade.checkReservationAvailability(), HttpStatus.FOUND);
     }
 
     @PostMapping("/update")
