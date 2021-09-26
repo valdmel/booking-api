@@ -23,7 +23,7 @@ The API is created using:
 ### ENDPOINTS
 
 - Server port used: 8080.
-- Example of pay load used for testing:
+- Example of payload used for testing:
 {
 	"id": 1,
 	"start_date": "2021-09-26",
