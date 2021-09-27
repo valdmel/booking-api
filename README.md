@@ -35,4 +35,11 @@ The API is created using:
 | /api/v1/booking/create | Place a reservation |
 | /api/v1/booking/find | Check room availability |
 | /api/v1/booking/update | Modify a reservation |
-| /api/v1/booking/cancel/1| Cancel a reservation |
+| /api/v1/booking/cancel/1 | Cancel a reservation |
+
+### FINAL THOUGHTS
+
+- Although mentioned that the API is insecure, I used the DTO pattern (request/response) to solve part of the problem.
+- As the API will be maintained by the hotel’s IT department and thinking in a solution decoupled as possible, I used a Facade pattern that could be used to do some complex tasks before calling the Booking Service methods. I thought in a second solution using application events, but since the API is simple, I decided to not focus much on that.
+- The MapStruct was used to help simplify the process of mappings within the project and make the code as clean as possible.
+- Since there is only one room available, I chose to use the ID = 1 for all reservations within the project (as seen in the payload example above).
