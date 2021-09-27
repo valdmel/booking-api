@@ -80,9 +80,7 @@ class BookingFacadeTest {
 		when(bookingService.createReservation(any())).thenReturn(null);
 		when(reservationMapper.mapReservationToReservationResponseDTO(any())).thenReturn(reservationResponseDTO);
 
-		Assertions.assertThrows(ReservationNotCreatedException.class, () -> {
-			bookingFacade.createReservation(reservationRequestDTO);
-		});
+		Assertions.assertThrows(ReservationNotCreatedException.class, () -> bookingFacade.createReservation(reservationRequestDTO));
 
 		verify(bookingService, Mockito.times(0)).createReservation(reservation);
 	}
@@ -120,9 +118,7 @@ class BookingFacadeTest {
 		when(bookingService.updateReservation(any())).thenReturn(null);
 		when(reservationMapper.mapReservationToReservationResponseDTO(any())).thenReturn(reservationResponseDTO);
 
-		Assertions.assertThrows(ReservationNotCreatedException.class, () -> {
-			bookingFacade.updateReservation(reservationRequestDTO);
-		});
+		Assertions.assertThrows(ReservationNotCreatedException.class, () -> bookingFacade.updateReservation(reservationRequestDTO));
 
 		verify(bookingService, Mockito.times(0)).updateReservation(reservation);
 	}
