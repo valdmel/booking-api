@@ -28,7 +28,6 @@ public class BookingFacade {
         return ReservationMapper.INSTANCE.mapReservationToReservationResponseDTO(bookingService.checkReservationAvailability());
     }
 
-
     public ReservationResponseDTO updateReservation(ReservationRequestDTO reservationRequestDTO) {
         Reservation reservation = ReservationMapper.INSTANCE.mapReservationRequestDTOToReservation(reservationRequestDTO);
 
